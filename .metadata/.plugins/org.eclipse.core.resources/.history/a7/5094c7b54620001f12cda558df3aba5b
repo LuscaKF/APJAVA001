@@ -1,0 +1,9 @@
+package br.com.lkf;
+
+import java.io.FileInputStream;
+
+public class Funcao {
+	public void letArquivo(String nome) {
+		FileInputStream file = new FileInputStream(nome)
+	}
+}

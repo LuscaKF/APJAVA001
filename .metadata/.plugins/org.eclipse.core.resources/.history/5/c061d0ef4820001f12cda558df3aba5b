@@ -1,0 +1,13 @@
+package br.com.lkf.exception;
+
+public class LimiteCreditoExcedidoException extends Exception {
+	private double quantiaExcedida;
+
+	// Construtor
+	public LimiteCreditoExcedidoException(double quantiaExcedida) {
+		super();
+		this.quantiaExcedida = quantiaExcedida;
+	}
+	
+	
+}

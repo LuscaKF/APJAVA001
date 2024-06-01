@@ -1,6 +1,10 @@
 package br.com.lkf;
 
+import java.io.FileNotFoundException;
+
+import br.com.lkf.exception.LimiteCreditoExcedidoException;
 import br.com.lkf.model.Aluno;
+import br.com.lkf.model.ContaBancaria;
 import br.com.lkf.model.Professor;
 
 public class Principal {
@@ -9,6 +13,10 @@ public class Principal {
 		
 		System.out.println("Hello World!");
 		System.out.println("------------");
+		
+		
+		
+		
 		System.out.println(":: Operadores lógicos! ::");
 		
 		
@@ -32,7 +40,10 @@ public class Principal {
 		
 		
 		
+		
 		System.out.println(":: Switch ::");
+		
+		
 		
 		// Switch
 		idade = 2;
@@ -65,7 +76,10 @@ public class Principal {
 		
 		
 		
+		
 		System.out.println(":: Looping ::");
+		
+		
 		
 		// Trabalhando com loopings
 		// Criar uma contagem de 0 a 20
@@ -104,10 +118,13 @@ public class Principal {
 		
 		
 		
+		
 		System.out.println(":: Programção Orientada a Objetos ::");
 		
 		
+		
 		// Objetos
+		
 		/*
 		Carro carro1 = new Carro(); // Instanciando uma classe
 		carro1.cor = "Branca";
@@ -125,10 +142,6 @@ public class Principal {
 		Carro carro3 = new Carro("Branca", "Chevrolet", "Onix");
 		carro3.andar();
 		
-		Carro carro4 = new Carro("Azul", "BYD", "Delphin", false);
-		System.out.println("Carro 4: " + carro4.toString());
-		carro4.parar();
-		
 		Carro carro5 = new Carro();
 		carro5.setCor("Verde");
 		carro5.setMarca("VW");
@@ -138,15 +151,57 @@ public class Principal {
 		carro5.andar();
 		
 		
+		
+		
 		System.out.println(":: Programação Orientada a Objetos - Herença ::");
 		
 		
+		
+		// Herença
 		Aluno aluno1 = new Aluno("123456", 2024, "Lucas", "11910447030", "lucasfernandesf18@gmail.com");
 		System.out.println("Aluno1: " + aluno1.toString());
 		
 		Professor professor1 = new Professor("POO", "Mestre", 1, "Ana Paula", "11988039874", "akirowjuca@gmail.com");
 		System.out.println("Professor1: " + professor1.toString());
+		
+		
+		
+		
+		System.out.println(":: Tratamento de erros ::");
+		
+		
+		
+		// Exceptions
+		 try {
+			System.out.println("Vou fazer a conta...");
+			int valor = 10 / 1;
+			System.out.println("O resultado é igual a: " + valor);
+			
+			int[] numeros = {0, 1, 2};
+			for(int y = 0; y<4; y++)
+				System.out.println(numeros[y]);
+			
+		} catch (ArithmeticException e) {
+			System.out.println(" - Error: " + e.getMessage());
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println(" - Error: " + e.getMessage());
+		}
+		 
+		Funcao funcao = new Funcao();
+		try {
+			funcao.lerArquivo("Principal.class");
+		} catch (FileNotFoundException e) {
+			// System.out.println(" - Error: " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		// Exceções personalizadas
+		ContaBancaria contaBancaria = new ContaBancaria(1500);
+		try {
+			contaBancaria.fazerPix(2000);
+		} catch (LimiteCreditoExcedidoException e) {
+			System.out.println(" - Error: " + e.getMessage());
+			// e.printStackTrace();
+		}
 	}
-	
-
 }
