@@ -290,8 +290,5 @@ public class Principal {
 		Map<Integer, Carro> estacionamento = new HashMap<Integer, Carro>();
 		estacionamento.put(0, carro3);
 		estacionamento.put(1, carro5);
-		
-		System.out.println("Carro número 3: " + estacionamento.get(0));
-		System.out.println("Carro número 5: " + estacionamento.get(1));
 	}
 }

@@ -2,13 +2,7 @@ package br.com.lkf;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import br.com.lkf.exception.LimiteCreditoExcedidoException;
 import br.com.lkf.model.Aluno;
@@ -215,83 +209,14 @@ public class Principal {
 		
 		
 		
-		System.out.println(":: Coleções - List ::");
+		System.out.println(":: Coleções ::");
 		
 		
 		
-		// Coleções - List
+		// Coleções
 		List<String> nomes = new ArrayList<String>();
 		nomes.add("Lucas");
 		nomes.add("Ana Paula");
 		nomes.add("Marcella");
-		nomes.add("Pedro");
-		
-		nomes.remove(3);
-		Collections.sort(nomes);
-		
-		List<String> nomesFiltrados = nomes.stream()
-				.filter(nome2 -> nome2.startsWith("A"))
-				.collect(Collectors.toList());
-		
-		for(String nome : nomesFiltrados) {
-			System.out.println("Nomes com filtro: " + nome);
-		}
-		
-		for(String nome : nomes) {
-			System.out.println("Nomes sem filtro: " + nome);
-		}
-		
-		List<Carro> carros = new ArrayList<Carro>();
-		carros.add(carro3);
-		carros.add(carro5);
-		
-		for(Carro carro : carros) {
-			System.out.println(carro.toString());
-		}
-		
-		
-		
-		
-		System.out.println(":: Coleções - Set ::");
-		
-		
-		
-		// Coleções - Set
-		Set<String> cores = new HashSet<String>();
-		cores.add("Azul");
-		cores.add("Vermelho");
-		cores.add("Verde");
-		cores.add("Amarelo");
-		
-		for(String cor : cores) {
-			System.out.println(cor);
-		}
-		
-		
-		
-		
-		System.out.println(":: Coleções - Map ::");
-		
-		
-		
-		// Coleções - Map
-		Map<String, String> paises = new HashMap<String, String>();
-		paises.put("Brasil", "Brasília");
-		paises.put("França", "Paris");
-		paises.put("Portugal", "Lisboa");
-		paises.put("Espanha", "Madrid");
-		
-		for(Map.Entry<String, String> entrada : paises.entrySet()) {
-			System.out.println(entrada.getKey() + " - " + entrada.getValue());
-		}
-		
-		System.out.println("Capital de Portugal: " + paises.get("Portugal"));
-		
-		Map<Integer, Carro> estacionamento = new HashMap<Integer, Carro>();
-		estacionamento.put(0, carro3);
-		estacionamento.put(1, carro5);
-		
-		System.out.println("Carro número 3: " + estacionamento.get(0));
-		System.out.println("Carro número 5: " + estacionamento.get(1));
 	}
 }
