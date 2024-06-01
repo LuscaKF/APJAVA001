@@ -1,0 +1,27 @@
+package br.com.lkf;
+
+public class Carro {
+	
+	// Atributos - características
+	private String cor;
+	private String marca;
+	private String modelo;
+	private String cambio; // Automático ou manual
+	
+	// Construtor
+	public Carro(String c, String ma, String mo) {
+		cor = c;
+		marca = ma;
+		modelo = mo;
+	}
+	
+	// Métodos - ações
+	public void andar() {
+		System.out.println("Andando...");
+	}
+	
+	public void parar() {
+		System.out.println("Parado!");
+	}
+
+}

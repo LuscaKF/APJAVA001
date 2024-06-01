@@ -1,0 +1,12 @@
+package br.com.lkf;
+
+public class Carro {
+	
+	// Atributos
+	String cor;
+	String marca;
+	String modelo;
+	
+	// Métodos
+
+}

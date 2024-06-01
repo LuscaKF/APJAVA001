@@ -1,0 +1,30 @@
+package br.com.lkf;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		System.out.println("Hello World!");
+		System.out.println("------------");
+		System.out.println(":: Operadores lógicos! ::");
+		
+		// Validação de operadores lógicos
+		boolean condicao = true;
+		if(condicao == true) {
+			System.out.println("Minha condição é verdadeira!");
+		} else {
+			System.out.println("Minha condição é falsa!");
+		}
+		
+		int idade = 14;
+		if (idade < 10) {
+			System.out.println("Filme infantil! ("+ idade + ")");
+		} else if(idade >= 10 && idade < 18) {
+			System.out.println("Filme Juvenil!");
+		} else {
+			System.out.println("Filme adulto!");
+		}
+
+	}
+
+}
