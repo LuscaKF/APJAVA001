@@ -1,7 +1,6 @@
 package br.com.lkf;
 
 import br.com.lkf.model.Aluno;
-import br.com.lkf.model.Professor;
 
 public class Principal {
 
@@ -139,13 +138,7 @@ public class Principal {
 		
 		
 		System.out.println(":: Programação Orientada a Objetos - Herença ::");
-		
-		
-		Aluno aluno1 = new Aluno("123456", 2024, "Lucas", "11910447030", "lucasfernandesf18@gmail.com");
-		System.out.println("Aluno1: " + aluno1.toString());
-		
-		Professor professor1 = new Professor("POO", "Mestre", 1, "Ana Paula", "11988039874", "akirowjuca@gmail.com");
-		System.out.println("Professor1: " + professor1.toString());
+		Aluno aluno1 = new Aluno();
 	}
 	
 

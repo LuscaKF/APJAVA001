@@ -1,0 +1,31 @@
+package br.com.lkf.model;
+
+public class Aluno {
+	private String matricula;
+	private int anoMatricula;
+	
+	// Construtor
+	public Aluno(String matricula, int anoMatricula) {
+		this.matricula = matricula;
+		this.anoMatricula = anoMatricula;
+	}
+	
+	// Getters Setters
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public int getAnoMatricula() {
+		return anoMatricula;
+	}
+
+	public void setAnoMatricula(int anoMatricula) {
+		this.anoMatricula = anoMatricula;
+	}
+	
+	
+}
