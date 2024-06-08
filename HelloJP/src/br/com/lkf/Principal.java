@@ -13,7 +13,9 @@ import java.util.stream.Collectors;
 import br.com.lkf.exception.LimiteCreditoExcedidoException;
 import br.com.lkf.model.Aluno;
 import br.com.lkf.model.ContaBancaria;
+import br.com.lkf.model.Disciplina;
 import br.com.lkf.model.Professor;
+import br.com.lkf.model.Pessoa;
 
 public class Principal {
 
@@ -174,6 +176,19 @@ public class Principal {
 		
 		
 		
+		System.out.println(":: Programação Orientada a Objetos - Herença/Polimorfismo ::");
+		
+		
+		
+		// Polimorfismo
+		Pessoa pessoa1 = new Aluno("3333", 2024, "Nome pesso 1", "Telefone", "pessoa1@gmail.com"); // Criar uma Pessoa implementando Aluno
+		
+		Pessoa pessoa2 = new Professor("Prog Web", "Doutor", 2, "Pessoa 2", "12345678", "prof@gmail.com"); // Criar uma Pessoa implementando Professor
+		
+		System.out.println("Pessoa1: " + pessoa1.toString());
+		System.out.println("Pessoa2: " + pessoa2.toString());
+		
+		
 		
 		System.out.println(":: Tratamento de erros ::");
 		
@@ -293,5 +308,23 @@ public class Principal {
 		
 		System.out.println("Carro número 3: " + estacionamento.get(0));
 		System.out.println("Carro número 5: " + estacionamento.get(1));
+		
+		
+		
+		
+		System.out.println(":: Builder ::");
+		
+		
+		
+		// Builder
+		Disciplina disciplina1 = new Disciplina("POO", "2p", 200);
+		System.out.println("Disciplina1: " + disciplina1);
+		
+		Disciplina disciplina2 = Disciplina.builder()
+				.setNome("Banco de dados")
+				.setPeriodo("3p")
+				.setCargaHoraria(300)
+				.build();
+		System.out.println("Disciplina2: " + disciplina2);
 	}
 }
