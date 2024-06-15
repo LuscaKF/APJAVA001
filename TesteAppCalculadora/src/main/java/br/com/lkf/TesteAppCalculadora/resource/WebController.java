@@ -6,27 +6,69 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WebController {
+	
 	@GetMapping("/")
 	public String showForm(Model model) {
-		model.addAttribute("modelOperacoes", List.of("Soma", "Subtração", "Mulltiplicação", "Divisão"));
+		model.addAttribute("modelOperacoes", 
+				List.of("Soma", "Subtração", "Multiplicação","Divisão"));
 		return "index";
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public String handleFormSubmission(
-			@RequestParam String modelOperacoes, 
-			@RequestParam String valor01, 
-			@RequestParam String valor02, 
-		    Model model) {
+			@RequestParam String modelOperacoes,
+			@RequestParam String valor01,
+			@RequestParam String valor02,
+			Model model) {
 		
-		System.out.println("modelOperacoes: " + modelOperacoes + ", " + 
-						   "valor01: " + valor01 + ", " + 
-						   "valor02: " + valor02);
+		String resposta = "";
+		int resp = 0;
 		
+		if(modelOperacoes.isEmpty() || valor01.isEmpty() || valor02.isEmpty()) {
+			model.addAttribute("response","Existem campos em branco!");
+			model.addAttribute("modelOperacoes", 
+					List.of("Soma", "Subtração", "Multiplicação","Divisão"));
+			return "index";
+		}
+		
+		try {
+			switch(modelOperacoes) {
+				case "Soma":
+					resp = Integer.parseInt(valor01) + Integer.parseInt(valor02);
+					break;
+				case "Subtração":
+					resp = Integer.parseInt(valor01) - Integer.parseInt(valor02);
+					break;
+				case "Multiplicação":
+					resp = Integer.parseInt(valor01) * Integer.parseInt(valor02);
+					break;
+				case "Divisão":
+					resp = Integer.parseInt(valor01) / Integer.parseInt(valor02);
+					break;
+			}
+		} catch (ArithmeticException e) {
+			model.addAttribute("response","Erro no cálculo: " + e.getMessage());
+			model.addAttribute("modelOperacoes", 
+					List.of("Soma", "Subtração", "Multiplicação","Divisão"));
+			return "index";
+		}
+		resposta = String.valueOf(resp);
+		
+		// Enviando dados para o site:
+		model.addAttribute("response","Resultado: " + resposta);
+		model.addAttribute("modelOperacoes", 
+				List.of("Soma", "Subtração", "Multiplicação","Divisão"));
 		return "index";
 	}
+	
+	@RequestMapping("/limpar")
+	public String limparResposta(Model model) {
+		return "redirect:/"; // Redirecionar para a página raiz = /index
+	}
+	
 }
