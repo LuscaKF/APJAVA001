@@ -43,7 +43,6 @@ INDEX VERSION 1.134+C:\Users\ana.paula\Documents\CursoJava\Codes\APJAVA001\.meta
 1173441440.index
 95058245.index
 3906862700.index
-2466097471.index
 2643541911.index
 2615775477.index
 221293020.index
