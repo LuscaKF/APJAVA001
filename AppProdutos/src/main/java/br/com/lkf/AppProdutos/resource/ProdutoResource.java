@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lkf.AppProdutos.model.Produto;
 import br.com.lkf.AppProdutos.service.ProdutoService;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("/api/produtos")  // http://localhost:8081/api/produtos
@@ -24,34 +25,7 @@ public class ProdutoResource {
 	@Autowired
 	ProdutoService produtoService;
 	
-	/*
-	@GetMapping("produto") // http://localhost:8081/api/produtos/produto
-	public ResponseEntity<Produto> getProduto() {
-		Produto produto = new Produto();
-		produto.setId(1L);
-		produto.setCodigoBarras("123456");
-		produto.setNome("Produto 1");
-		produto.setPreco(55.0);
-		return ResponseEntity.ok(produto);
-	}
-	
-	@GetMapping("salvar") // http://localhost:8081/api/produtos/salvar
-	public ResponseEntity<Produto> save2() {
-		Produto produto = new Produto();
-		produto.setCodigoBarras("123456");
-		produto.setNome("Produto 1");
-		produto.setPreco(55.0);
-		
-		// Está indo até a classe de serviço
-		Produto produtoResposta = produtoService.save(produto);
-		if(produtoResposta == null) {
-			ResponseEntity.notFound().build();
-		}
-		return ResponseEntity.ok(produtoResposta);
-	}
-	
-	*/
-	
+	@Operation(summary = "Busca todos os registros por ID de produtos")
 	@GetMapping // http://localhost:8081/api/produtos
 	public ResponseEntity<List<Produto>> findAllProdutos() {
 		List<Produto> produtos = produtoService.findAll();
@@ -64,6 +38,7 @@ public class ProdutoResource {
 		return ResponseEntity.ok(produtos);
 	}
 	
+	@Operation(summary = "Busca um registro por ID de produtos")
 	@GetMapping("/{id}") // http://localhost:8081/api/produtos/2
 	public ResponseEntity<Optional<Produto>> findById(@PathVariable Long id) {
 		Optional<Produto> produto = produtoService.findById(id);
@@ -73,6 +48,7 @@ public class ProdutoResource {
 		return ResponseEntity.ok(produto);
 	}
 	
+	@Operation(summary = "Grava os registros de produtos")
 	@PostMapping // http://localhost:8081/api/produtos
 	public ResponseEntity<Produto> save(@RequestBody Produto produto) {
 		Produto newProduto = produtoService.save(produto);
@@ -83,6 +59,7 @@ public class ProdutoResource {
 		}
 	}
 	
+	@Operation(summary = "Atualiza o registro de produto. Validação por ID")
 	@PutMapping // http://localhost:8081/api/produtos
 	public ResponseEntity<Produto> update(@RequestBody Produto produto) {
 		Produto updProduto = produtoService.update(produto);
@@ -92,6 +69,7 @@ public class ProdutoResource {
 		
 	}
 	
+	@Operation(summary = "Exclui o registro de produto por ID")
 	@DeleteMapping("/{id}") // http://localhost:8081/api/produtos/2
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		produtoService.delete(id);
