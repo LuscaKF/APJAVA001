@@ -14,6 +14,7 @@ import br.com.lkf.AppProdutos.service.interfaces.EstoqueServiceInterface;
 
 @Service
 public class EstoqueService implements EstoqueServiceInterface {
+
 	@Autowired
 	private EstoqueRepository estoqueRepository;
 	
@@ -22,18 +23,23 @@ public class EstoqueService implements EstoqueServiceInterface {
 
 	@Override
 	public Estoque save(Estoque estoque) {
-		// Verificar se o produto existe, caso não, avisar
+		// verificar se o produto existe, caso não, avisar
 		if(estoque.getProduto().getId() != null) {
-			// Buscar no banco de dados
-			Optional<Produto> findProduto = produtoRepository.findById(estoque.getProduto().getId());
+			
+			//buscar o produto no banco de dados
+			Optional<Produto> findProduto = produtoRepository.
+					findById(estoque.getProduto().getId());			
 			if(!findProduto.isEmpty()) {
+				//ñ vazio
 				estoque.setProduto(findProduto.get());
 				return estoqueRepository.save(estoque);
-			} else {
-				System.out.println("Produto não encontrado id: " + estoque.getProduto().getId());
+			}else {
+				System.out.println("Produto não encontrado id: " + 
+						estoque.getProduto().getId());
 				return null;
 			}
-		} else {
+			
+		}else {
 			System.out.println("Produto não encontrado!");
 			return null;
 		}
@@ -51,24 +57,29 @@ public class EstoqueService implements EstoqueServiceInterface {
 
 	@Override
 	public Estoque update(Estoque estoque) {
-		// Pesquisar se o estoque existe:
-		Optional<Estoque> findEstoque = estoqueRepository.findById(estoque.getId());
+		//pesquisar se o estoque existe:
+		Optional<Estoque> findEstoque = estoqueRepository
+				.findById(estoque.getId());
 		
-		// Se o estoque existir, atualizar (Persistir)
+		//se o estoque existir, atualizo (persisto)
 		if(findEstoque.isPresent()) {
-			// Criar um novo objeto de estoque e lançar os dados do objeto de parâmetro neste novo obj e gravar
+			//criar um novo objeto de estoque  
+			// e lançar os dados do objeto de parâmetro neste novo obj e gravar
 			Estoque updEstoque = findEstoque.get();
 			updEstoque.setQuantidade(estoque.getQuantidade());
-			// Retornar o objeto gravado
-			return estoqueRepository.save(updEstoque); // UPDATE
-		} else {
-			// INSERT
+			//retornar o objeto gravado:
+			return estoqueRepository.save(updEstoque); //UPDATE
+		}else {
+			//INSERT
 			return save(estoque);
 		}
+		
 	}
 
 	@Override
 	public void delete(Long id) {
 		estoqueRepository.deleteById(id);
 	}
+	
+	
 }

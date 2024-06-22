@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_produto")
 public class Produto {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,6 +26,7 @@ public class Produto {
 	@Column(nullable = false)
 	private Double preco;
 	
+	// -----------------------------------------
 	public Produto() {}
 
 	public Produto(Long id, String codigoBarras, String nome, Double preco) {
@@ -86,8 +88,10 @@ public class Produto {
 	@Override
 	public String toString() {
 		return "[id = " + this.id + ", " +
-			   "codigoBarras = " + this.codigoBarras + ", " +
-			   "nome = " + this.nome + ", " +
-			   "preco = " + this.preco + "]";
+	            "codigoBarras = " + this.codigoBarras + ", " +
+				"Nome = " + this.nome + ", " + 
+	            "Preco = " + this.preco + "]";
 	}
+	
+	
 }

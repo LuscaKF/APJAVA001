@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.lkf.AppProdutos.model.Estoque;
 
 @Repository
-public interface EstoqueRepository extends JpaRepository<Estoque, Long> {}
+public interface EstoqueRepository extends JpaRepository<Estoque, Long> {
+	
+}
